@@ -29,7 +29,7 @@ services:
       LISTEN_ON_ALL_PUBLIC: 'true'
       RESPOND_ON_DM: 'true'
     volumes:
-    - ./hubot-scripts:/home/hubot/scripts
+    - ./hubot-scripts/node_modules:/home/hubot/scripts
     links:
     - rocket.chat:rocketchat
     network_mode: bridge
