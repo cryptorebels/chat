@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  db:
+    image: mongo:3.0
+    network_mode: bridge
+
+  rocket.chat:
+    image: rocket.chat:latest
+    depends_on:
+    - db
+    environment:
+      ROOT_URL: https://alianza.cryptorebelde.trading
+      VIRTUAL_HOST: alianza.crypytorebelde.trading
+      LETSENCRYPT_HOST: alianza.cryptorebelde.trading
+      LETSENCRYPT_MAIL: elboletaire@underave.net
+    expose:
+    - '3000'
+    links:
+    - db
+    network_mode: bridge
+
+  backups:
+    build:
+      context: backups
+    depends_on:
+    - rocket.chat
+    - db
+    environment:
+      MONGODB_HOST: db
+      MONGODB_PORT: '27017'
+      MAX_BACKUPS:
+    links:
+    - db:mongodb
+    network_mode: bridge
