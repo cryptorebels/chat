@@ -11,11 +11,25 @@ services:
     - db
     environment:
       ROOT_URL: https://alianza.cryptorebeldes.trading
-      VIRTUAL_HOST: alianza.crytorebeldes.trading
+      VIRTUAL_HOST: alianza.cryptorebeldes.trading
       LETSENCRYPT_HOST: alianza.cryptorebeldes.trading
-      LETSENCRYPT_MAIL: elboletaire@underave.net
+      LETSENCRYPT_EMAIL: elboletaire@underave.net
     links:
     - db
+    network_mode: bridge
+
+  hubot:
+    image: rocketchat/hubot-rocketchat
+    environment:
+      BOT_NAME: rebelbot
+      EXTERNAL_SCRIPTS: hubot-help,hubot-seen,hubot-links,hubot-diagnostics,hubot-victory,hubot-tell,hubot-thesimpsons,hubot-explainshell,hubot-current-time,hubot-sushiyuki,hubot-http-status,hubot-qr,hubot-reaction,hubot-9gag,hubot-memes,hubot-voting
+      ROCKETCHAT_PASSWORD: "${HUBOT_PASSWORD}"
+      ROCKETCHAT_URL: rocket.chat:3000
+      ROCKETCHAT_USER: "${HUBOT_USER}"
+      LISTEN_ON_ALL_PUBLIC: 'true'
+      RESPOND_ON_DM: 'true'
+    links:
+    - rocket.chat
     network_mode: bridge
 
   backups:
