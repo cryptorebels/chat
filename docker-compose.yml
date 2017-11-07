@@ -28,8 +28,10 @@ services:
       ROCKETCHAT_USER: "${HUBOT_USER}"
       LISTEN_ON_ALL_PUBLIC: 'true'
       RESPOND_ON_DM: 'true'
+    volumes:
+    - ./hubot-scripts:/home/hubot/scripts
     links:
-    - rocket.chat
+    - rocket.chat:rocketchat
     network_mode: bridge
 
   backups:
