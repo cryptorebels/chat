@@ -11,7 +11,7 @@ services:
     - db
     environment:
       ROOT_URL: https://alianza.cryptorebeldes.trading
-      VIRTUAL_HOST: alianza.crypytorebeldes.trading
+      VIRTUAL_HOST: alianza.crytorebeldes.trading
       LETSENCRYPT_HOST: alianza.cryptorebeldes.trading
       LETSENCRYPT_MAIL: elboletaire@underave.net
     links:
