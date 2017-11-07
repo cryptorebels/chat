@@ -10,12 +10,10 @@ services:
     depends_on:
     - db
     environment:
-      ROOT_URL: https://alianza.cryptorebelde.trading
-      VIRTUAL_HOST: alianza.crypytorebelde.trading
-      LETSENCRYPT_HOST: alianza.cryptorebelde.trading
+      ROOT_URL: https://alianza.cryptorebeldes.trading
+      VIRTUAL_HOST: alianza.crypytorebeldes.trading
+      LETSENCRYPT_HOST: alianza.cryptorebeldes.trading
       LETSENCRYPT_MAIL: elboletaire@underave.net
-    expose:
-    - '3000'
     links:
     - db
     network_mode: bridge
